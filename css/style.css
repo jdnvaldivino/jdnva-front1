@@ -407,7 +407,10 @@ header nav a[aria-current="page"] {
 
 .btn--outline {
   background: transparent;
-  color: var(--cor-primaria);
+  /* transparente = herda o fundo da seção onde o botão está (que muda de
+     tema); por isso, ao contrário do .btn cheio, este texto precisa do
+     token que acompanha o canvas, não da cor de marca fixa */
+  color: var(--color-link);
 }
 
 .btn--outline:hover {
@@ -560,7 +563,11 @@ section {
 }
 
 .badge--secondary {
-  background: rgba(242, 165, 65, 0.18);
+  /* cor sólida (equivalente visual do laranja a 18% sobre branco), não
+     rgba: um fundo com alfa herda a cor por trás — em vez de um chip
+     sempre claro, no modo escuro ele ficava um marrom escuro turvo com
+     texto escuro em cima (2.16:1, achado pelo Lighthouse/axe) */
+  background: #fdefdd;
   color: #8a5a12;
 }
 
