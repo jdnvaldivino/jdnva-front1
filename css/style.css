@@ -74,6 +74,24 @@
   white-space: nowrap;
 }
 
+/* Skip link: some da tela até receber foco (Tab), permitindo pular o menu
+   e ir direto para o conteúdo principal — WCAG 2.4.1 Bypass Blocks */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--cor-primaria-escura);
+  color: var(--cor-branco);
+  padding: var(--space-3) var(--space-5);
+  border-radius: 0 0 var(--radius-sm) 0;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
 body {
   margin: 0;
   font-family: var(--fonte);

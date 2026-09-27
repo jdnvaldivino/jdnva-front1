@@ -237,24 +237,25 @@ function templateCadastro() {
             <div class="campo">
               <label for="nome">Nome completo *</label>
               <input type="text" id="nome" name="nome" required minlength="5" autocomplete="name"
-                placeholder="Digite seu nome completo">
-              <small class="erro" data-erro-para="nome"></small>
+                placeholder="Digite seu nome completo" aria-describedby="erro-nome">
+              <small class="erro" id="erro-nome" data-erro-para="nome" role="alert"></small>
             </div>
 
             <div class="linha-dupla">
               <div class="campo">
                 <label for="email">E-mail *</label>
                 <input type="email" id="email" name="email" required autocomplete="email"
-                  placeholder="seuemail@exemplo.com">
-                <small class="erro" data-erro-para="email"></small>
+                  placeholder="seuemail@exemplo.com" aria-describedby="erro-email">
+                <small class="erro" id="erro-email" data-erro-para="email" role="alert"></small>
               </div>
 
               <div class="campo">
                 <label for="cpf">CPF *</label>
                 <input type="text" id="cpf" name="cpf" required inputmode="numeric"
                   placeholder="000.000.000-00" maxlength="14" autocomplete="off"
-                  pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}" title="Formato esperado: 000.000.000-00">
-                <small class="erro" data-erro-para="cpf"></small>
+                  pattern="\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}" title="Formato esperado: 000.000.000-00"
+                  aria-describedby="erro-cpf">
+                <small class="erro" id="erro-cpf" data-erro-para="cpf" role="alert"></small>
               </div>
             </div>
 
@@ -263,14 +264,16 @@ function templateCadastro() {
                 <label for="telefone">Telefone / Celular *</label>
                 <input type="tel" id="telefone" name="telefone" required inputmode="numeric"
                   placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel"
-                  pattern="\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}" title="Formato esperado: (00) 00000-0000">
-                <small class="erro" data-erro-para="telefone"></small>
+                  pattern="\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}" title="Formato esperado: (00) 00000-0000"
+                  aria-describedby="erro-telefone">
+                <small class="erro" id="erro-telefone" data-erro-para="telefone" role="alert"></small>
               </div>
 
               <div class="campo">
                 <label for="nascimento">Data de nascimento *</label>
-                <input type="date" id="nascimento" name="nascimento" required autocomplete="bday">
-                <small class="erro" data-erro-para="nascimento"></small>
+                <input type="date" id="nascimento" name="nascimento" required autocomplete="bday"
+                  aria-describedby="erro-nascimento">
+                <small class="erro" id="erro-nascimento" data-erro-para="nascimento" role="alert"></small>
               </div>
             </div>
           </fieldset>
@@ -283,23 +286,24 @@ function templateCadastro() {
                 <label for="cep">CEP *</label>
                 <input type="text" id="cep" name="cep" required inputmode="numeric"
                   placeholder="00000-000" maxlength="9" autocomplete="postal-code"
-                  pattern="\\d{5}-\\d{3}" title="Formato esperado: 00000-000">
-                <small class="erro" data-erro-para="cep"></small>
+                  pattern="\\d{5}-\\d{3}" title="Formato esperado: 00000-000"
+                  aria-describedby="erro-cep">
+                <small class="erro" id="erro-cep" data-erro-para="cep" role="alert"></small>
               </div>
 
               <div class="campo">
                 <label for="cidade">Cidade *</label>
                 <input type="text" id="cidade" name="cidade" required autocomplete="address-level2"
-                  placeholder="Sua cidade">
-                <small class="erro" data-erro-para="cidade"></small>
+                  placeholder="Sua cidade" aria-describedby="erro-cidade">
+                <small class="erro" id="erro-cidade" data-erro-para="cidade" role="alert"></small>
               </div>
             </div>
 
             <div class="campo">
               <label for="logradouro">Endereço *</label>
               <input type="text" id="logradouro" name="logradouro" required autocomplete="address-line1"
-                placeholder="Rua, número, bairro">
-              <small class="erro" data-erro-para="logradouro"></small>
+                placeholder="Rua, número, bairro" aria-describedby="erro-logradouro">
+              <small class="erro" id="erro-logradouro" data-erro-para="logradouro" role="alert"></small>
             </div>
           </fieldset>
 
@@ -314,11 +318,11 @@ function templateCadastro() {
           </fieldset>
 
           <div class="campo termos">
-            <input type="checkbox" id="termos" name="termos" required>
+            <input type="checkbox" id="termos" name="termos" required aria-describedby="erro-termos">
             <label for="termos">Li e concordo com os termos de uso e a política de privacidade *</label>
           </div>
           <button type="button" class="link-botao" id="abrir-termos">Ver termos de uso e política de privacidade</button>
-          <small class="erro" data-erro-para="termos"></small>
+          <small class="erro" id="erro-termos" data-erro-para="termos" role="alert"></small>
 
           <button type="submit" class="btn">Enviar cadastro</button>
 

@@ -42,6 +42,10 @@ function iniciarFormularioCadastro() {
     var alvo = form.querySelector('[data-erro-para="' + campo.name + '"]');
     if (alvo) alvo.textContent = texto || '';
     campo.classList.toggle('campo--invalido', Boolean(texto));
+    // aria-invalid avisa leitores de tela do estado do campo sem depender só
+    // da cor da borda; o texto do erro já está ligado via aria-describedby
+    // (declarado no HTML) e é anunciado pelo role="alert" do próprio <small>.
+    campo.setAttribute('aria-invalid', Boolean(texto));
   }
 
   // --- Persistência em localStorage (rascunho + lista de cadastros) ---
