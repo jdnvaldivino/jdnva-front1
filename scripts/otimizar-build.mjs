@@ -35,11 +35,18 @@
 // template JS) e copia a pasta imagens/ (sem otimização de imagem — fora do
 // escopo desta etapa, já registrado como possível melhoria futura).
 
-import { readdir, readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir, copyFile, stat } from 'node:fs/promises';
 import { transform } from 'esbuild';
 import { minify as minifyHtml } from 'html-minifier-terser';
+import sharp from 'sharp';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+// Larguras do srcset responsivo: 400 cobre celular a 1x, 800 cobre
+// celular a 2x (ou tablet a 1x), 1200 é a resolução nativa do arquivo
+// original (para desktop a 2x) — gerar acima disso seria fazer upscale.
+const LARGURAS_WEBP = [400, 800, 1200];
+const LARGURA_FALLBACK_PNG = 600; // mesmo tamanho do <img width> hoje (fallback p/ navegador sem WebP)
 
 const raiz = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const distDir = path.join(raiz, 'dist');
@@ -69,13 +76,46 @@ async function minificarJs() {
   return relatorio;
 }
 
-async function copiarImagens() {
+async function otimizarImagens() {
   const origem = path.join(raiz, 'imagens');
   const destino = path.join(distDir, 'imagens');
   await mkdir(destino, { recursive: true });
+  const relatorio = [];
+
   for (const nome of await readdir(origem)) {
-    await copyFile(path.join(origem, nome), path.join(destino, nome));
+    const caminhoOrigem = path.join(origem, nome);
+    const extensao = path.extname(nome).toLowerCase();
+    const semExtensao = path.basename(nome, extensao);
+
+    if (extensao !== '.png' && extensao !== '.jpg' && extensao !== '.jpeg') {
+      // SVG e outros formatos vetoriais/já otimizados: copia sem alterar.
+      await copyFile(caminhoOrigem, path.join(destino, nome));
+      continue;
+    }
+
+    const tamanhoOriginal = (await stat(caminhoOrigem)).size;
+
+    // srcset responsivo em WebP — o <picture> em templates.js escolhe a
+    // largura certa para a viewport/densidade de tela em vez de sempre
+    // baixar a imagem inteira.
+    for (const largura of LARGURAS_WEBP) {
+      const buffer = await sharp(caminhoOrigem).resize({ width: largura }).webp({ quality: 80 }).toBuffer();
+      const nomeSaida = `${semExtensao}-${largura}.webp`;
+      await writeFile(path.join(destino, nomeSaida), buffer);
+      relatorio.push({ nome: nomeSaida, tamanhoOriginal, tamanhoFinal: buffer.length });
+    }
+
+    // Fallback para navegadores sem suporte a WebP: PNG redimensionado e
+    // recomprimido (não a imagem original em resolução 2x sem necessidade).
+    const pngFallback = await sharp(caminhoOrigem)
+      .resize({ width: LARGURA_FALLBACK_PNG })
+      .png({ quality: 80, compressionLevel: 9 })
+      .toBuffer();
+    const nomeFallback = `${semExtensao}-${LARGURA_FALLBACK_PNG}.png`;
+    await writeFile(path.join(destino, nomeFallback), pngFallback);
+    relatorio.push({ nome: nomeFallback, tamanhoOriginal, tamanhoFinal: pngFallback.length });
   }
+  return relatorio;
 }
 
 async function minificarHtml() {
@@ -124,8 +164,14 @@ function logRelatorio(titulo, relatorio) {
 }
 
 const relatorioJs = await minificarJs();
-await copiarImagens();
+const relatorioImagens = await otimizarImagens();
 const relatorioHtml = await minificarHtml(); // roda depois do ajuste de ../js/ e da cópia de imagens
 
 logRelatorio('Minificação de JS (esbuild, arquivo a arquivo, sem bundlar):', relatorioJs);
 logRelatorio('Minificação de HTML (html-minifier-terser):', relatorioHtml);
+
+console.log('\nOtimização de imagens (sharp: WebP responsivo + fallback PNG):');
+for (const r of relatorioImagens) {
+  const reducao = (100 * (1 - r.tamanhoFinal / r.tamanhoOriginal)).toFixed(1);
+  console.log(`  ${r.nome}: original ${r.tamanhoOriginal} B -> ${r.tamanhoFinal} B (-${reducao}%)`);
+}
