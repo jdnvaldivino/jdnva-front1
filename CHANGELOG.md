@@ -29,6 +29,27 @@ commit.
 Releases são criadas a partir da branch `develop`, mergeadas em `main` com
 merge commit (`--no-ff`) e marcadas com uma tag anotada `vMAJOR.MINOR.PATCH`.
 
+## [1.1.0] - 2026-09-27
+
+### Added
+- Acessibilidade WCAG 2.1 AA: skip link, trap de foco no modal de termos,
+  `aria-describedby`/`role="alert"`/`aria-invalid` no formulário de cadastro.
+- Modo escuro automático (`prefers-color-scheme: dark`), com contraste
+  verificado por cálculo (WCAG) e pelo Lighthouse (axe-core).
+- README detalhado: tecnologias, pré-requisitos, instalação, build e testes.
+- Build de produção (`npm run build`): Vite + esbuild (minifica JS arquivo a
+  arquivo, sem bundlar — scripts clássicos com globais compartilhados) +
+  html-minifier-terser (HTML) + sharp (imagens responsivas em WebP com
+  fallback PNG).
+- Pipeline de deploy contínuo para GitHub Pages via GitHub Actions,
+  disparado a cada push em `main`.
+
+### Fixed
+- Bordas de input/card não atingiam 3:1 de contraste contra fundo branco
+  (WCAG 1.4.11) — corrigido nos dois temas.
+- `.btn--outline` e `.badge--secondary` quebravam contraste no modo escuro
+  (achado pelo Lighthouse) — corrigidos.
+
 ## [1.0.0] - 2026-09-27
 
 ### Added
@@ -39,4 +60,5 @@ merge commit (`--no-ff`) e marcadas com uma tag anotada `vMAJOR.MINOR.PATCH`.
 - Versionamento do projeto com Git seguindo o modelo GitFlow
   (`main` / `develop` / `feature/*` / `hotfix/*`).
 
+[1.1.0]: https://github.com/jdnvaldivino/jdnva-front1/releases/tag/v1.1.0
 [1.0.0]: https://github.com/jdnvaldivino/jdnva-front1/releases/tag/v1.0.0
