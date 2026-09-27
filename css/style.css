@@ -10,7 +10,7 @@
   --color-neutral-900: #26313a;   /* texto principal */
   --color-neutral-600: #5a6b76;   /* texto secundário/legendas */
   --color-neutral-300: #7c8991;   /* bordas de input — 3.6:1 sobre fundo claro (WCAG 1.4.11) */
-  --color-neutral-200: #8b98a1;   /* bordas de card — ~3:1 sobre fundo claro (WCAG 1.4.11) */
+  --color-neutral-200: #818d94;   /* bordas de card — 3.4:1 sobre fundo claro (WCAG 1.4.11) */
   --color-neutral-100: #f6f8f7;   /* fundo claro de seção */
   --color-neutral-000: #ffffff;   /* branco / fundo padrão */
   --color-success: #1e8449;       /* feedback positivo */
