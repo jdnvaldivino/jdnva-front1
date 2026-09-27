@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="titulo-svg desc-svg">
+  <title id="titulo-svg">Voluntários do Instituto Semear</title>
+  <desc id="desc-svg">Ilustração de um grupo de voluntários lado a lado, representando a equipe da ONG.</desc>
+  <rect width="600" height="360" fill="#eaf3f0"/>
+  <circle cx="150" cy="180" r="60" fill="#1b6f5c"/>
+  <circle cx="300" cy="150" r="70" fill="#f2a541"/>
+  <circle cx="450" cy="180" r="60" fill="#124d40"/>
+  <rect x="90" y="240" width="120" height="90" rx="16" fill="#1b6f5c"/>
+  <rect x="240" y="220" width="120" height="110" rx="16" fill="#f2a541"/>
+  <rect x="390" y="240" width="120" height="90" rx="16" fill="#124d40"/>
+</svg>

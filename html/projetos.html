@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Semear | Projetos</title>
+  <meta name="description" content="Conheça as iniciativas solidárias do Instituto Semear: educação, geração de renda e assistência social.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container header__content">
+      <a href="index.html" class="logo">Instituto <span>Semear</span></a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false"
+        aria-controls="menu-principal" aria-label="Abrir menu de navegação">
+        <span class="nav-toggle__barra"></span>
+        <span class="nav-toggle__barra"></span>
+        <span class="nav-toggle__barra"></span>
+      </button>
+      <nav class="nav-principal" id="menu-principal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li class="nav-item--dropdown">
+            <a href="projetos.html" aria-current="page">Projetos</a>
+            <ul class="submenu">
+              <li><a href="projetos.html#lista-projetos-title">Projetos em andamento</a></li>
+              <li><a href="projetos.html#voluntariado-title">Como ser voluntário</a></li>
+              <li><a href="projetos.html#doacao-title">Como doar</a></li>
+            </ul>
+          </li>
+          <li><a href="cadastro.html">Seja Voluntário</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="projetos-title">
+      <div class="container">
+        <h1 id="projetos-title">Nossas iniciativas solidárias</h1>
+        <p>Cada projeto nasce de uma necessidade real identificada junto às comunidades atendidas.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="lista-projetos-title">
+      <div class="container">
+        <h2 id="lista-projetos-title">Projetos em andamento</h2>
+
+        <div class="lista-projetos grid-12">
+          <article class="projeto col-sm-6 col-lg-3" aria-labelledby="projeto-1-title">
+            <span class="badge badge--primary projeto__tag">Educação</span>
+            <h3 id="projeto-1-title">Semear Educação Digital</h3>
+            <p>
+              Aulas gratuitas de informática básica e lógica de programação para jovens de 14 a 18
+              anos, com certificação ao final do curso.
+            </p>
+          </article>
+
+          <article class="projeto col-sm-6 col-lg-3" aria-labelledby="projeto-2-title">
+            <span class="badge badge--secondary projeto__tag">Geração de renda</span>
+            <h3 id="projeto-2-title">Mãos que Produzem</h3>
+            <p>
+              Oficinas de costura e artesanato para mães chefes de família, com apoio para venda da
+              produção em feiras locais.
+            </p>
+          </article>
+
+          <article class="projeto col-sm-6 col-lg-3" aria-labelledby="projeto-3-title">
+            <span class="badge badge--primary projeto__tag">Assistência social</span>
+            <h3 id="projeto-3-title">Semear Cidadania</h3>
+            <p>
+              Orientação jurídica e emissão de documentos civis para famílias em situação de
+              vulnerabilidade.
+            </p>
+          </article>
+
+          <article class="projeto col-sm-6 col-lg-3" aria-labelledby="projeto-4-title">
+            <span class="badge badge--neutral projeto__tag">Meio ambiente</span>
+            <h3 id="projeto-4-title">Horta Comunitária Semear</h3>
+            <p>
+              Hortas coletivas em terrenos cedidos por parceiros, garantindo segurança alimentar e
+              renda extra para as famílias participantes.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="voluntariado-title">
+      <div class="container">
+        <h2 id="voluntariado-title">Como ser voluntário</h2>
+        <p>
+          Você pode colaborar diretamente com o tempo e o talento, participando de uma ou mais
+          frentes de atuação da ONG. O processo tem três passos simples:
+        </p>
+        <ol class="passos-voluntariado">
+          <li><strong>Cadastro:</strong> preencha o formulário de voluntariado com seus dados e disponibilidade.</li>
+          <li><strong>Entrevista:</strong> nossa equipe entra em contato para entender seu interesse e experiência.</li>
+          <li><strong>Integração:</strong> você é apresentado ao projeto mais alinhado ao seu perfil e começa a colaborar.</li>
+        </ol>
+        <a href="cadastro.html" class="btn">Quero ser voluntário</a>
+      </div>
+    </section>
+
+    <section class="sobre" aria-labelledby="doacao-title">
+      <div class="container">
+        <h2 id="doacao-title">Como fazer sua doação</h2>
+        <p>
+          Doações financeiras sustentam a estrutura dos projetos e permitem ampliar o número de
+          famílias atendidas. Confira as formas disponíveis de contribuir:
+        </p>
+        <div class="cards grid-12">
+          <article class="col-sm-6 col-md-4" aria-labelledby="doacao-pix-title">
+            <h3 id="doacao-pix-title">Pix</h3>
+            <p>Chave CNPJ 00.000.000/0001-00, com recibo enviado automaticamente por e-mail.</p>
+          </article>
+          <article class="col-sm-6 col-md-4" aria-labelledby="doacao-transferencia-title">
+            <h3 id="doacao-transferencia-title">Transferência bancária</h3>
+            <p>Banco 000, agência 0000, conta corrente 00000-0, em nome do Instituto Semear.</p>
+          </article>
+          <article class="col-sm-6 col-md-4" aria-labelledby="doacao-itens-title">
+            <h3 id="doacao-itens-title">Doação de itens</h3>
+            <p>Recebemos alimentos não perecíveis, roupas e materiais escolares na sede da ONG.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-projetos-title">
+      <div class="container">
+        <h2 id="cta-projetos-title">Quer apoiar um desses projetos?</h2>
+        <p>Cadastre-se como voluntário e escolha como contribuir com seu tempo e talento.</p>
+        <a href="cadastro.html" class="btn">Cadastre-se agora</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer__content grid-12">
+      <div class="col-sm-6 col-md-4">
+        <h2>Instituto Semear</h2>
+        <p>CNPJ 00.000.000/0001-00</p>
+      </div>
+
+      <nav class="col-sm-6 col-md-4" aria-label="Links institucionais">
+        <h3>Institucional</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="cadastro.html">Seja Voluntário</a></li>
+        </ul>
+      </nav>
+
+      <div class="col-sm-6 col-md-4">
+        <h3>Contato</h3>
+        <address>
+          <p>Rua das Acácias, 123 — São Paulo/SP</p>
+          <p><a href="mailto:contato@institutosemear.org.br">contato@institutosemear.org.br</a></p>
+        </address>
+      </div>
+    </div>
+    <p class="copyright">&copy; 2026 Instituto Semear. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../js/navegacao.js"></script>
+</body>
+</html>
