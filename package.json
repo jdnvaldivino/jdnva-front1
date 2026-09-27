@@ -1,0 +1,17 @@
+{
+  "name": "jdnva-front1",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/otimizar-build.mjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "html-minifier-terser": "^7.2.0",
+    "sharp": "^0.35.5",
+    "vite": "^6.0.0"
+  }
+}
