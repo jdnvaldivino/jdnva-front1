@@ -109,8 +109,17 @@ function templateInicio() {
         <h2 id="sobre-title">Quem somos</h2>
 
         <figure class="sobre__figura">
-          <img src="../imagens/equipe-voluntarios.png" width="600" height="360"
-            alt="Ilustração de três grupos de voluntários do Instituto Semear lado a lado, representando as diferentes frentes de atuação da ONG.">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="../imagens/equipe-voluntarios-400.webp 400w,
+                      ../imagens/equipe-voluntarios-800.webp 800w,
+                      ../imagens/equipe-voluntarios-1200.webp 1200w"
+              sizes="(min-width: 768px) 600px, 92vw">
+            <img src="../imagens/equipe-voluntarios-600.png" width="600" height="360"
+              loading="lazy" decoding="async"
+              alt="Ilustração de três grupos de voluntários do Instituto Semear lado a lado, representando as diferentes frentes de atuação da ONG.">
+          </picture>
           <figcaption>Parte da rede de voluntários que sustenta os projetos do Instituto Semear.</figcaption>
         </figure>
 
